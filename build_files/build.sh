@@ -13,6 +13,17 @@ set -ouex pipefail
 dnf5 install -y \
   docker docker-compose
 
+dnf5 copr enable jdxcode/mise \
+  && dnf5 install -y mise \
+  && mise i \
+    bun deno node java@17 uv zig ubi:leoafarias/fvm \
+    jj ubi:idursun/jjui lazygit ubi:afnanenayet/diffsitter \
+    bat tmux zellij starship ubi:nushell/nushell \
+    claude npm:@github/copilot ubi:block/goose \
+    ubi:dector/bang ubi:dector/serv \
+    ubi:dector/lampa \
+    ubi:tailwindlabs/tailwindcss
+
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
@@ -21,5 +32,7 @@ dnf5 install -y \
 # dnf5 -y copr disable ublue-os/staging
 
 #### Example for enabling a System Unit File
+
+dnf5 clean all
 
 systemctl enable podman.socket
