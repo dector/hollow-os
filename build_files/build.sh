@@ -14,8 +14,6 @@ dnf5 install -y \
   brew \
   docker docker-compose
 
-brew install mise
-
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
