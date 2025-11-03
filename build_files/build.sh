@@ -11,9 +11,9 @@ set -ouex pipefail
 
 # this installs a package from fedora repos
 dnf5 install -y \
-  vim curl \
-  mise docker docker-compose \
-  tmux
+  docker docker-compose
+
+brew install mise
 
 # Use a COPR Example:
 #
