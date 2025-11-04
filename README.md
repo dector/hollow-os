@@ -1,5 +1,9 @@
 # Hollow OS (Desktop)
 
+After Bazzite setup - run:
+  - `sudo bootc switch ghcr.io/dector/hollow-os && systemctl reboot`.
+  - `sh https://raw.githubusercontent.com/dector/hollow-os/refs/heads/main/INIT.sh`.
+
 Changes:
 
   - Installed [mise](https://mise.jdx.dev/) from
