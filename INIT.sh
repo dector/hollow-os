@@ -3,6 +3,8 @@
 set -Eeuo pipefail
 trap '[ $? -eq 0 ] && exit 0 || printf "\n❌ error on line %s (exit code %s)\n" "$LINENO" "$?" >&2' EXIT
 
+A_USER=$USER
+
 new_line() {
   echo ""
 }
@@ -108,7 +110,7 @@ setup_tailscale() {
 
   new_line
   echo "|> Adding user as operator..."
-  sudo tailscale set --operator=$(whoami)
+  sudo tailscale set --operator=$A_USER
 
   new_line
   echo "|> Checking Tailscale login status..."
