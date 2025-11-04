@@ -80,7 +80,7 @@ install_rustdesk() {
   new_line
 
   echo "|> Installing RustDesk via flatpak..."
-  flatpak --user install flathub com.rustdesk.RustDesk
+  flatpak install flathub com.rustdesk.RustDesk
 
   new_line
   echo "|> Done!"
