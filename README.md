@@ -2,7 +2,13 @@
 
 After Bazzite setup - run:
   - `sudo bootc switch ghcr.io/dector/hollow-os && systemctl reboot`.
-  - `curl -sL https://raw.githubusercontent.com/dector/hollow-os/refs/heads/main/INIT.sh | sh`.
+  - ```
+      cd $(mktemp -d)
+      curl -fsSL \
+        https://raw.githubusercontent.com/dector/hollow-os/refs/heads/main/INIT.sh \
+        > INIT.sh
+      sh INIT.sh
+    ```
 
 Changes:
 
