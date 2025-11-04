@@ -142,7 +142,27 @@ setup_tailscale() {
   echo "|> Done!"
 }
 
+install_mise_apps() {
+  new_line
+  echo "------- INSTALLING apps from mise -------"
+  new_line
+
+  mise u -g \
+    atuin starship \
+    bun deno node java uv zig ubi:leoafarias/fvm \
+    jj ubi:idursun/jjui lazygit ubi:afnanenayet/diffsitter \
+    bat tmux zellij ubi:nushell/nushell \
+    claude npm:@github/copilot ubi:block/goose \
+    ubi:dector/bang ubi:dector/serv \
+    ubi:dector/lampa \
+    ubi:tailwindlabs/tailwindcss
+
+  mise i android-sdk java@17
+  echo "|> Done!"
+}
+
 install_mise
-install_rustdesk
+#install_rustdesk
 setup_tailscale
 
+install_mise_apps
