@@ -152,12 +152,13 @@ install_mise_apps() {
     bun deno node java uv zig ubi:leoafarias/fvm \
     jj ubi:idursun/jjui lazygit ubi:afnanenayet/diffsitter \
     bat zellij \
-    # nushell has name `nu` in repo - need to fix it \
-    #ubi:nushell/nushell \
     claude npm:@github/copilot ubi:block/goose \
     ubi:dector/bang ubi:dector/serv \
     ubi:dector/lampa \
     ubi:tailwindlabs/tailwindcss
+
+    # nushell has name `nu` in repo - need to fix it \
+    #ubi:nushell/nushell \
 
   mise i android-sdk java@17
   echo "|> Done!"
