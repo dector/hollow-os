@@ -12,11 +12,6 @@ set -ouex pipefail
 # Install docker
 dnf install -y docker docker-compose
 
-# Install mise from COPR
-dnf -y copr enable jdxcode/mise \
-  && dnf -y install mise
-  #&& dnf5 -y copr disable jdxcode/mise # Disable COPRs so they don't end up enabled on the final image:
-
 ### Enabling a System Unit File
 
 systemctl enable podman.socket
