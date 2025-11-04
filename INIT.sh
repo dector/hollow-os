@@ -107,6 +107,10 @@ setup_tailscale() {
   esac
 
   new_line
+  echo "|> Adding user as operator..."
+  sudo tailscale set --operator $USER
+
+  new_line
   echo "|> Logging into Tailscale with QR code..."
   tailscale login --qr
 
