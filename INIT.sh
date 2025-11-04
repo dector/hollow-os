@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-set -eu
+set -Eeuo pipefail
 
 new_line() {
   echo ""
