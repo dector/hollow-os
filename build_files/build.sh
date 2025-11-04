@@ -13,26 +13,24 @@ set -ouex pipefail
 dnf5 install -y \
   docker docker-compose
 
-dnf5 copr enable jdxcode/mise \
+# Install mise from COPR
+dnf5 -y copr enable jdxcode/mise \
   && dnf5 install -y mise \
   && mise i \
-    bun deno node java@17 uv zig ubi:leoafarias/fvm \
+    bun deno node java java@17 uv zig ubi:leoafarias/fvm \
     jj ubi:idursun/jjui lazygit ubi:afnanenayet/diffsitter \
     bat tmux zellij starship ubi:nushell/nushell \
     claude npm:@github/copilot ubi:block/goose \
     ubi:dector/bang ubi:dector/serv \
     ubi:dector/lampa \
-    ubi:tailwindlabs/tailwindcss
+    ubi:tailwindlabs/tailwindcss \
+  && dnf5 -y corp disable jdxcode/mise # Disable COPRs so they don't end up enabled on the final image:
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+### Enabling a System Unit File
 
-#### Example for enabling a System Unit File
+systemctl enable podman.socket
+
+### Cleanup
 
 dnf5 clean all
 
-systemctl enable podman.socket
