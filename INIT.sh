@@ -86,6 +86,52 @@ install_rustdesk() {
   echo "|> Done!"
 }
 
+setup_tailscale() {
+  new_line
+  echo "------- SETTING UP Tailscale -------"
+  new_line
+
+  printf "Do you want to enable Tailscale? [y/n] (y): "
+  read -r enable_ts
+
+  # Default to 'y' if empty
+  enable_ts=${enable_ts:-y}
+
+  case "$enable_ts" in
+    y|Y)
+      ;;
+    *)
+      echo "Skipping Tailscale setup."
+      return
+      ;;
+  esac
+
+  new_line
+  echo "|> Logging into Tailscale with QR code..."
+  tailscale login --qr
+
+  new_line
+  printf "Do you want to enable SSH? [y/n] (n): "
+  read -r enable_ssh
+
+  # Default to 'n' if empty
+  enable_ssh=${enable_ssh:-n}
+
+  case "$enable_ssh" in
+    y|Y)
+      echo "|> Enabling Tailscale SSH..."
+      tailscale up --ssh
+      ;;
+    *)
+      echo "Skipping SSH setup."
+      ;;
+  esac
+
+  new_line
+  echo "|> Done!"
+}
+
 install_mise
 install_rustdesk
+setup_tailscale
 
