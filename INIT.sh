@@ -111,8 +111,13 @@ setup_tailscale() {
   sudo tailscale set --operator=$(whoami)
 
   new_line
-  echo "|> Logging into Tailscale with QR code..."
-  tailscale login --qr
+  echo "|> Checking Tailscale login status..."
+  if [ "$(tailscale status --json | jq -r '.BackendState')" = "NeedsLogin" ]; then
+    echo "|> Logging into Tailscale with QR code..."
+    tailscale login --qr
+  else
+    echo "Already logged into Tailscale. Skipping login."
+  fi
 
   new_line
   printf "Do you want to enable SSH? [y/n] (n): "
