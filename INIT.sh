@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 set -Eeuo pipefail
-trap 'printf "\n❌ error on line %s (exit code %s)\n" "$LINENO" "$?" >&2' ERR
+trap '[ $? -eq 0 ] && exit 0 || printf "\n❌ error on line %s (exit code %s)\n" "$LINENO" "$?" >&2' EXIT
 
 new_line() {
   echo ""
