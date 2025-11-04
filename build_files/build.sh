@@ -15,7 +15,7 @@ dnf5 install -y \
 
 # Install mise from COPR
 dnf5 -y copr enable jdxcode/mise \
-  && dnf5 install -y mise \
+  && dnf5 -y install mise \
   && mise i \
     bun deno node java java@17 uv zig ubi:leoafarias/fvm \
     jj ubi:idursun/jjui lazygit ubi:afnanenayet/diffsitter \
@@ -24,7 +24,7 @@ dnf5 -y copr enable jdxcode/mise \
     ubi:dector/bang ubi:dector/serv \
     ubi:dector/lampa \
     ubi:tailwindlabs/tailwindcss \
-  && dnf5 -y corp disable jdxcode/mise # Disable COPRs so they don't end up enabled on the final image:
+  && dnf5 -y copr disable jdxcode/mise # Disable COPRs so they don't end up enabled on the final image:
 
 ### Enabling a System Unit File
 
