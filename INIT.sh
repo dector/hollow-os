@@ -108,11 +108,11 @@ setup_tailscale() {
 
   new_line
   echo "|> Adding user as operator..."
-  sudo tailscale set --operator $USER
+  sudo tailscale set --operator=$USER
 
   new_line
   echo "|> Logging into Tailscale with QR code..."
-  tailscale login --qr
+  sudo tailscale login --qr
 
   new_line
   printf "Do you want to enable SSH? [y/n] (n): "
