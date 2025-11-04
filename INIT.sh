@@ -12,8 +12,16 @@ wait_for_enter() {
 }
 
 install_mise() {
+  new_line
   echo "------- INSTALLING mise -------"
   new_line
+
+  # Check if mise is already installed
+  if command -v mise >/dev/null 2>&1; then
+    echo "mise is already installed ($(command -v mise))"
+    echo "Skipping installation."
+    return
+  fi
 
   echo "|> Creating temporary directory..."
   cd $(mktemp -d)
@@ -47,11 +55,36 @@ install_mise() {
   echo "|> Done!"
 }
 
-# Check if mise is already installed
-if command -v mise >/dev/null 2>&1; then
-  echo "mise is already installed ($(command -v mise))"
-  echo "Skipping installation."
-else
-  install_mise
-fi
+install_rustdesk() {
+  new_line
+  echo "------- INSTALLING RustDesk -------"
+  new_line
+
+  printf "Do you want to install RustDesk? [y/n] (y): "
+  read -r install_rd
+
+  # Default to 'y' if empty
+  install_rd=${install_rd:-y}
+
+  case "$install_rd" in
+    y|Y)
+      ;;
+    *)
+      echo "Skipping RustDesk installation."
+      return
+      ;;
+  esac
+
+  echo "------- INSTALLING RustDesk -------"
+  new_line
+
+  echo "|> Installing RustDesk via flatpak..."
+  flatpak --user install com.rustdesk.RustDesk
+
+  new_line
+  echo "|> Done!"
+}
+
+install_mise
+install_rustdesk
 
