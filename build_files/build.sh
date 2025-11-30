@@ -11,8 +11,16 @@ set -ouex pipefail
 
 # Install docker
 dnf install -y \
-  docker docker-compose incus # Containers
+  # System monitoring \
+  htop \
+  # Networking \
+  fuse-sshfs \
+  # Containers \
+  docker docker-compose incus \
+  # Image Processing \
+  ImageMagick-heic \
 
+  
 ### Enabling a System Unit File
 
 systemctl enable podman.socket
