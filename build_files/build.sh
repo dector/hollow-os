@@ -10,7 +10,8 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # Install docker
-dnf install -y docker docker-compose
+dnf install -y \
+  docker docker-compose incus # Containers
 
 ### Enabling a System Unit File
 
