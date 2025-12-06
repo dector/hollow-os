@@ -4,7 +4,7 @@ COPY build_files /
 
 # Base Image
 #FROM ghcr.io/ublue-os/bazzite-gnome-nvidia-open:stable
-FROM ghcr.io/ublue-os/bazzite-gnome-open:stable
+FROM ghcr.io/ublue-os/bazzite-gnome:stable
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
